@@ -39,7 +39,7 @@ route.get("/seguidos", async (req, res) => {
     res.status(500).json({ message: e.message });
   }
 });
-
+//crear vinculo
 route.post("/", async (req, res) => {
   try {
     const { seguidor_id, siguiendo_id } = req.body;
@@ -64,7 +64,7 @@ route.post("/", async (req, res) => {
     res.status(500).json({ message: e.message });
   }
 });
-
+//eliminar vinculo
 route.delete("/:id", async (req, res) => {
   try {
     await Follow.deleteOne({

@@ -5,7 +5,7 @@ const tweetRoute = require("./tweet")
 const configRoutes = (app) => {
   app.use("/users", userRoute);
   app.use("/follow",followRoute)
-//   app.use("/tweet", tweetRoute);
+  app.use("/tweet", tweetRoute);
  
 };
 
