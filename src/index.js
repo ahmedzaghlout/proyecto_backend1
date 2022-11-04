@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const routes = require('./routes/routes');
-
+const morgan = require('morgan');
+const configRoutes = require("./routes");
+const app = express();
 require('dotenv').config();
 
 const mongoString = process.env.DATABASE_URL
@@ -15,11 +16,11 @@ database.once('connected', () => {
     console.log('Database Connected');
 })
 
-const app = express();
-app.use('/api', routes)
-
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
+app.use(morgan('tiny'))
+configRoutes(app);
+// app.use('/api', routes)
 app.listen(3000, () => {
     console.log(`Server Started at ${3000}`)
 })
